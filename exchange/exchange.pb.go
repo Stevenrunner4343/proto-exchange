@@ -77,7 +77,7 @@ type ExchangeRateResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FromCurrency  string                 `protobuf:"bytes,1,opt,name=from_currency,json=fromCurrency,proto3" json:"from_currency,omitempty"`
 	ToCurrency    string                 `protobuf:"bytes,2,opt,name=to_currency,json=toCurrency,proto3" json:"to_currency,omitempty"`
-	Int32         float32                `protobuf:"fixed32,3,opt,name=int32,proto3" json:"int32,omitempty"`
+	Rate          int32                  `protobuf:"varint,3,opt,name=rate,proto3" json:"rate,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -126,9 +126,9 @@ func (x *ExchangeRateResponse) GetToCurrency() string {
 	return ""
 }
 
-func (x *ExchangeRateResponse) GetInt32() float32 {
+func (x *ExchangeRateResponse) GetRate() int32 {
 	if x != nil {
-		return x.Int32
+		return x.Rate
 	}
 	return 0
 }
@@ -221,12 +221,12 @@ const file_exchange_proto_rawDesc = "" +
 	"\x0fCurrencyRequest\x12#\n" +
 	"\rfrom_currency\x18\x01 \x01(\tR\ffromCurrency\x12\x1f\n" +
 	"\vto_currency\x18\x02 \x01(\tR\n" +
-	"toCurrency\"r\n" +
+	"toCurrency\"p\n" +
 	"\x14ExchangeRateResponse\x12#\n" +
 	"\rfrom_currency\x18\x01 \x01(\tR\ffromCurrency\x12\x1f\n" +
 	"\vto_currency\x18\x02 \x01(\tR\n" +
-	"toCurrency\x12\x14\n" +
-	"\x05int32\x18\x03 \x01(\x02R\x05int32\"\x93\x01\n" +
+	"toCurrency\x12\x12\n" +
+	"\x04rate\x18\x03 \x01(\x05R\x04rate\"\x93\x01\n" +
 	"\x15ExchangeRatesResponse\x12@\n" +
 	"\x05rates\x18\x01 \x03(\v2*.exchange.ExchangeRatesResponse.RatesEntryR\x05rates\x1a8\n" +
 	"\n" +

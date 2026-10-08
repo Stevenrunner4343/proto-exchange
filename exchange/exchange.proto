@@ -17,7 +17,7 @@ message CurrencyRequest {
 message ExchangeRateResponse {
     string from_currency = 1;
     string to_currency = 2;
-    int32 = 3;
+    int32 rate = 3;
 }
 
 message ExchangeRatesResponse {
