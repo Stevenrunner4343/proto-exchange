@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package exchange;
+
+option go_package = "github.com/Stevenrunner4343/proto-exchange/exchange";
+
+service ExchangeService {
+    rpc GetExchangeRates(Empty) returns (ExchangeRatesResponse);
+    rpc GetExchangeRateForCurrency(CurrencyRequest) returns (ExchangeRateResponse);
+}
+
+message CurrencyRequest {
+    string from_currency = 1;
+    string to_currency = 2;
+}
+
+message ExchangeRateResponse {
+    string from_currency = 1;
+    string to_currency = 2;
+    int32 = 3;
+}
+
+message ExchangeRatesResponse {
+    map<string, int32> rates = 1;
+}
+
+message Empty {}
