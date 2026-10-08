@@ -77,7 +77,7 @@ type ExchangeRateResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FromCurrency  string                 `protobuf:"bytes,1,opt,name=from_currency,json=fromCurrency,proto3" json:"from_currency,omitempty"`
 	ToCurrency    string                 `protobuf:"bytes,2,opt,name=to_currency,json=toCurrency,proto3" json:"to_currency,omitempty"`
-	Rate          float32                `protobuf:"fixed32,3,opt,name=rate,proto3" json:"rate,omitempty"`
+	Rate          int32                  `protobuf:"varint,3,opt,name=rate,proto3" json:"rate,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -126,7 +126,7 @@ func (x *ExchangeRateResponse) GetToCurrency() string {
 	return ""
 }
 
-func (x *ExchangeRateResponse) GetRate() float32 {
+func (x *ExchangeRateResponse) GetRate() int32 {
 	if x != nil {
 		return x.Rate
 	}
@@ -135,7 +135,7 @@ func (x *ExchangeRateResponse) GetRate() float32 {
 
 type ExchangeRatesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Rates         map[string]float32     `protobuf:"bytes,1,rep,name=rates,proto3" json:"rates,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	Rates         map[string]int32       `protobuf:"bytes,1,rep,name=rates,proto3" json:"rates,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -170,7 +170,7 @@ func (*ExchangeRatesResponse) Descriptor() ([]byte, []int) {
 	return file_exchange_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ExchangeRatesResponse) GetRates() map[string]float32 {
+func (x *ExchangeRatesResponse) GetRates() map[string]int32 {
 	if x != nil {
 		return x.Rates
 	}
@@ -226,13 +226,13 @@ const file_exchange_proto_rawDesc = "" +
 	"\rfrom_currency\x18\x01 \x01(\tR\ffromCurrency\x12\x1f\n" +
 	"\vto_currency\x18\x02 \x01(\tR\n" +
 	"toCurrency\x12\x12\n" +
-	"\x04rate\x18\x03 \x01(\x02R\x04rate\"\x93\x01\n" +
+	"\x04rate\x18\x03 \x01(\x05R\x04rate\"\x93\x01\n" +
 	"\x15ExchangeRatesResponse\x12@\n" +
 	"\x05rates\x18\x01 \x03(\v2*.exchange.ExchangeRatesResponse.RatesEntryR\x05rates\x1a8\n" +
 	"\n" +
 	"RatesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x02R\x05value:\x028\x01\"\a\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\a\n" +
 	"\x05Empty2\xb0\x01\n" +
 	"\x0fExchangeService\x12D\n" +
 	"\x10GetExchangeRates\x12\x0f.exchange.Empty\x1a\x1f.exchange.ExchangeRatesResponse\x12W\n" +
